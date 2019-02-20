@@ -12,23 +12,59 @@ const API = '03f6506a1cbdec03bb25ac7d19331518';
 
 class App extends Component {
   state = {
-    loaded: false
+    location: localStorage.getItem('location'),
+    loaded: false,
+    todayData: null,
+    fiveDaysData: null
   }
-  // componentDidMount() {
-  //   fetch(`https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=${API}`)
-  //     .then(resp => resp.json())
-  //     .then(resp => {
-  //       console.log(resp);
-  //     })
-  // }
+  componentDidMount() {
+    this.dataFetch(this.state.location)
+  }
+  dataFetch = value => {
+    this.setState({ location: value, loaded: false });
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${value}&appid=${API}`)
+      .then(resp => {
+        if (!resp.ok) {
+          console.log("error")
+          return
+        }
+        return resp
+      })
+      .then(resp => resp.json())
+      .then(resp => {
+        this.setState({
+          todayData: resp,
+          loaded: true
+        });
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?id=${this.state.todayData.id}&appid=${API}`)
+          .then(resp => resp.json())
+          .then(resp => {
+            this.setState({
+              fiveDaysData: resp
+            });
+          })
+      });
+  }
+  reload = () => {
+    this.dataFetch(this.state.location)
+  }
   render() {
     return (
       <div className="container">
         <div className="main">
-          <Header />
-          <Now />
+          <Header
+            dataFetch={this.dataFetch}
+            location={this.state.location}
+            todayData={this.state.todayData}
+            loaded={this.state.loaded} />
+          <Now
+            todayData={this.state.todayData}
+            loaded={this.state.loaded} />
           <FiveDays />
-          <Footer />
+          <Footer
+            reload={this.reload}
+            todayData={this.state.todayData}
+            loaded={this.state.loaded} />
         </div>
       </div>
     );
@@ -36,6 +72,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-{/* 03f6506a1cbdec03bb25ac7d19331518 */ }

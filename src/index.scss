@@ -32,6 +32,9 @@ header{
 header p{
   margin-bottom: 5px;
 }
+.city{
+  cursor: pointer;
+}
 .today{
   display: flex;
   justify-content: space-between;
@@ -135,6 +138,61 @@ footer{
   border-left: 1px solid black;
 }
 
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+
+  .modal-main {
+    position:fixed;
+    background: white;
+    max-width: 550px;
+    width:90%;
+    height: auto;
+    padding: 50px;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    
+    form{
+      position: relative;
+
+      .search-term {
+        float: left;
+        width: 100%;
+        border: 3px solid #00B4CC;
+        padding: 5px;
+        height: 30px;
+        border-radius: 5px;
+        outline: none;
+        color: #9DBFAF;
+      }
+      
+      .search-term:focus{
+        color: #00B4CC;
+      }
+      
+      .search-btn {
+        position: absolute;  
+        right: 0;
+        width: 30px;
+        height: 30px;
+        border: 1px solid #00B4CC;
+        background: #00B4CC;
+        text-align: center;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .sunrise-sunset{
       display: flex;
@@ -153,6 +211,7 @@ footer{
   .image img{
       width: 60%;
   }
+
 }
 
 
@@ -189,3 +248,4 @@ footer{
     margin-top: -20px;
   }
 }
+

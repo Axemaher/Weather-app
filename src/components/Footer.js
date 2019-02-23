@@ -6,18 +6,20 @@ class Footer extends React.Component {
         time: ""
     }
 
-    componentWillReceiveProps() {
+    componentDidMount() {
         let time = new Date();
-        time = `${time.getHours()}.${time.getMinutes()}`
+        const hours = time.getHours();
+        const minutes = time.getMinutes();
+        const seconds = time.getSeconds();
         this.setState({
-            time
+            time: `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`
         })
     }
     render() {
         return (
             <footer>
                 <p className="uv"></p>
-                <p>{this.state.time} Updated <FontAwesomeIcon className="faReload" icon="sync-alt" onClick={this.props.reload} /></p>
+                <p>{this.state.time} Odświeżono <FontAwesomeIcon className="faReload" icon="sync-alt" onClick={this.props.reload} /></p>
             </footer >
         )
     }

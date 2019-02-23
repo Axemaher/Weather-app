@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class SearchModal extends Component {
     state = {
-        city: "",
+        location: "",
     }
     handleChange = e => {
         this.setState({
@@ -13,9 +13,7 @@ class SearchModal extends Component {
     }
     handleSubmit = e => {
         e.preventDefault();
-        localStorage.setItem('location', this.state.city);
-
-        this.props.dataFetch(this.state.city)
+        this.props.dataFetch(this.state.location)
         this.props.handleSearchModal(false)
     }
     render() {
@@ -23,7 +21,7 @@ class SearchModal extends Component {
             <div className="modal" >
                 <section className='modal-main'>
                     <form onSubmit={this.handleSubmit}>
-                        <input className="search-term" type="text" name="city" placeholder="City or post code to search" autoFocus="autofocus" onChange={this.handleChange} />
+                        <input className="search-term" type="text" name="location" placeholder="Miasto lub kod pocztowy" autoFocus="autofocus" onChange={this.handleChange} />
                         <button className="search-btn" type="submit"><FontAwesomeIcon icon="search" /></button>
                     </form>
                 </section>

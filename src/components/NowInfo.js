@@ -42,7 +42,6 @@ class NowInfo extends React.Component {
         const date = new Date();
         const hours = date.getHours();
         const minutes = date.getMinutes();
-
         return `${hours < 10 ? `0${hours}` : `${hours}`}: ${minutes < 10 ? `0${minutes}` : `${minutes}`} `
     }
     sunriseSunsetTime = time => {
@@ -50,12 +49,11 @@ class NowInfo extends React.Component {
         const hours = time.getHours();
         const minutes = time.getMinutes();
         const seconds = time.getSeconds();
-        return `${hours < 10 ? `0${hours}` : hours}: ${minutes < 10 ? `0${minutes}` : minutes}: ${seconds < 10 ? `0${seconds}` : seconds} `;
+        return `${hours < 10 ? `0${hours}` : hours}: ${minutes < 10 ? `0${minutes}` : minutes}`;
     }
     dayDuration = () => {
         const { sunset, sunrise } = this.props.nowData.sys
         const duration = sunset - sunrise;
-        console.log(duration)
         const time = new Date(duration * 1000);
         const hours = time.getHours();
         const minutes = time.getMinutes();

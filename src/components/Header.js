@@ -6,15 +6,10 @@ class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            search: false,
+            searchModal: false,
             windSpeed: "",
             windDeg: "",
         }
-    }
-    handleSearchModal = value => {
-        this.setState({
-            search: value
-        })
     }
     componentDidMount() {
         const { speed, deg } = this.props.nowData.wind
@@ -22,8 +17,13 @@ class Header extends Component {
             windSpeed: (speed * 1.609344).toFixed(),
             windDeg: this.windDeg(deg),
         })
-
     }
+    handleSearchModal = value => {
+        this.setState({
+            searchModal: value
+        })
+    }
+
     windDeg = deg => {
         let direction = "";
         if (deg > 348.75 || deg < 11.25) { direction = "N" }
@@ -45,6 +45,7 @@ class Header extends Component {
         return direction
     }
     render() {
+        const { location, dataFetch } = this.props;
         const { windSpeed, windDeg } = this.state;
         return (
             <>
@@ -52,7 +53,7 @@ class Header extends Component {
                     <p
                         className="city"
                         onClick={() => this.handleSearchModal(true)}>
-                        {this.props.location}
+                        {location}
                         <FontAwesomeIcon className="faIcon" icon="search" />
                     </p>
                     <p
@@ -60,12 +61,12 @@ class Header extends Component {
                         <FontAwesomeIcon className="faIcon" icon="wind" />{windSpeed}
                         km/h {windDeg}</p>
                 </header>
-                {this.state.search ?
+                {this.state.searchModal ?
                     <SearchModal
                         handleSearchModal={this.handleSearchModal}
-                        dataFetch={this.props.dataFetch}
+                        dataFetch={dataFetch}
                     />
-                    : ""}
+                    : null}
             </>
         );
     }

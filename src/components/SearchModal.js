@@ -21,8 +21,19 @@ class SearchModal extends Component {
             <div className="modal" >
                 <section className='modal-main'>
                     <form onSubmit={this.handleSubmit}>
-                        <input className="search-term" type="text" name="location" placeholder="Miasto lub kod pocztowy" autoFocus="autofocus" onChange={this.handleChange} />
-                        <button className="search-btn" type="submit"><FontAwesomeIcon icon="search" /></button>
+                        <input
+                            className="search-term"
+                            type="text"
+                            name="location"
+                            placeholder="Miasto lub kod pocztowy"
+                            autoFocus="autofocus"
+                            onChange={this.handleChange}
+                        />
+                        <button
+                            className="search-btn"
+                            type="submit">
+                            <FontAwesomeIcon icon="search" />
+                        </button>
                     </form>
                 </section>
             </div>

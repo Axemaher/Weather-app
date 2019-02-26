@@ -6,6 +6,7 @@
 body{
   background-color: #ededed;
   font-family: 'Montserrat', sans-serif;
+  color: #eaeaea;
 }
 .container{
   width: 100vw;
@@ -19,10 +20,16 @@ body{
   width:600px;
   height: auto;
   background-color: #ffffff;
-  padding: 10px;
+
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   align-content:space-around;
   flex-direction:column;
+}
+.background {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 10px;
 }
 header{
   display: flex;
@@ -253,8 +260,8 @@ footer{
   }
   .container{
       height: 100%;
-
   }
+
   .day{
       font-size: 0.6em;
       img{

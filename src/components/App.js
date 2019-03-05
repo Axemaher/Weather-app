@@ -68,6 +68,7 @@ class App extends Component {
       });
 
   }
+
   reload = () => {
     if (this.state.error) {
       this.setState({
@@ -100,6 +101,7 @@ class App extends Component {
     else if (weatherId >= 600 && weatherId <= 622) { return "bg_snow.gif"; }
     else if (weatherId >= 801 && weatherId <= 804) { return "bg_clouds.gif"; }
     else if (weatherId === 800) { return "bg_clear_sky.jpg"; }
+    else { return "bg_clear_sky.jpg" }
   }
   backgroundUrlHandler = () => {
     return require(`../icons/${this.state.dayTime}/${this.backgroundNameHandler()}`)

@@ -47,8 +47,8 @@ class NowImageInfo extends Component {
                         {temp}<sup>o</sup>C
                         </p>
                     <p className="temp-min-max">
-                        <span>{temp_min == Infinity ? temp : temp_min}<sup>o</sup>C</span>
-                        <span>{temp_max == Infinity ? temp : temp_max}<sup>o</sup>C</span>
+                        <span>{isFinite(temp_min) ? temp_min : "-"}<sup>o</sup>C</span>
+                        <span>{isFinite(temp_max) ? temp_max : "-"}<sup>o</sup>C</span>
                     </p>
                 </div>
                 <p className="feels">Temp. odczuwalna {temp}<sup>o</sup>C</p>

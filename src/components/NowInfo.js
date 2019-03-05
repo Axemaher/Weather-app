@@ -48,7 +48,6 @@ class NowInfo extends React.Component {
         time = new Date(time * 1000);
         const hours = time.getHours();
         const minutes = time.getMinutes();
-        const seconds = time.getSeconds();
         return `${hours < 10 ? `0${hours}` : hours}: ${minutes < 10 ? `0${minutes}` : minutes}`;
     }
     dayDuration = () => {

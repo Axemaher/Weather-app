@@ -136,7 +136,7 @@ header{
   padding:5px;
 }
 .day img{
-  width: 60px;
+  width: 80px;
   display: block;
   margin: 0 auto;
 }
@@ -264,9 +264,6 @@ footer{
 
   .day{
       font-size: 0.6em;
-      img{
-        width: 45px;
-      }
   }
 
   .image img{
@@ -295,6 +292,9 @@ footer{
   }
   .now .info{
     width: 100%;
+  }
+  .day img {
+    width: 55px;
   }
   .date{
     font-size: 1em;
